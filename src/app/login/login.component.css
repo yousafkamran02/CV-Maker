@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+.form-body{
+    background: linear-gradient(to right, rgba(250, 40, 173, 0.699),
+    rgba(149, 32, 102, 0.719)); /* Start with white and transition to purple */
+
+    border: 2px;
+    border-radius: 10px;
+}
+.text{
+    padding: 15px;
+}
+input[type="email"],
+input[type="password"] {
+  height: 20px;
+  width: 300px;
+  border-radius: 10px;
+  border: none; /* Remove the border */
+  padding: 10px;
+}
+
+input[type="submit"]{
+    height: 40px;
+    width: 250px;
+    cursor: pointer;
+    border: none ;
+    border-radius: 15px;
+    background-color:rgb(211, 206, 206);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(146, 144, 144);
+    top: 10px; /* Move the hovered element down by 2 pixels */
+    box-shadow: none; /* Remove the box shadow effect */
+  }
+  
+.button{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Merriweather';
+}
+p{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Merriweather';
+    font-weight: bold;
+}
