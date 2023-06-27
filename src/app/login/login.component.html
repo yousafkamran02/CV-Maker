@@ -1,8 +1,20 @@
 <div class="form-body">
     <p>Login</p>
-    <form>
-        <div  class="text"><input type="email" placeholder="Email"/></div>
-        <div class="text"><input type="password" placeholder="Password"/></div>
-        <div class="button"><input type="submit"/></div>
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="text">
+        <input type="email" name="email" formControlName="email" placeholder="Email" />
+        
+      </div>
+      <div class="text">
+        <input type="password" name="password" formControlName="password" placeholder="Password" />
+      </div>
+      <div class="button">
+        <input type="submit" />
+      </div>
+      <div class="or-line">
+        <span class="or-text">OR</span>
+      </div>
+      <div class="reg-div"><a class="reg" href="#">Register</a></div>
     </form>
-</div>
+  </div>
+  

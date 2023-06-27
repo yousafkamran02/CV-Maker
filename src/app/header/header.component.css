@@ -7,33 +7,3 @@ nav img{
     padding: 10px;
     width: 100px;
 }
-nav ul{
- padding-top: 20px;
-    float: right;
-    list-style-type: none;
-}
-ul li{
-    display: inline;
-    padding: 10px;
-    margin: 20px;
-    list-style-position: inside;
-    border: 2px ;
-    border-radius: 15px;
-    background-color:rgb(3, 121, 95);
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    position: relative; /* Add position relative to enable positioning */
-  transition: top 0.2s ease; /* Add transition for smooth animation */
-}
-li a{
-    color: white;
-    text-decoration: none;
-    font-family: 'Merriweather';
-   
-}
-nav ul li:hover {
-    background-color: rgb(3, 166, 95);
-    top: 10px; /* Move the hovered element down by 2 pixels */
-    box-shadow: none; /* Remove the box shadow effect */
-  }
-  

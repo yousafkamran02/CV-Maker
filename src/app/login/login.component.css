@@ -24,11 +24,13 @@ input[type="submit"]{
     cursor: pointer;
     border: none ;
     border-radius: 15px;
-    background: linear-gradient(to right, rgba(250, 40, 173, 0.699),
-    rgba(149, 32, 102, 0.719));
+    background: linear-gradient(to right, rgba(33, 176, 109, 0.699),
+    rgba(32, 149, 42, 0.719));
     font-family: 'Merriweather';
     font-weight: bold;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+    color: #2a1928b5;
+    font-size: medium;
 }
 
 input[type="submit"]:hover {
@@ -46,10 +48,60 @@ input[type="submit"]:hover {
 }
 p{
     color: #2a1928b5;
-    padding: 20px;
+    padding: 15px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Merriweather';
     font-weight: bold;
+    margin: 0;
+}
+.or-line {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .or-line::before,
+  .or-line::after {
+    content: "";
+    flex-grow: 1;
+    border-top: 1.5px solid rgb(146, 146, 146);
+  }
+  
+  .or-text {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #2a1928b5;
+    font-family: 'Merriweather';
+  }
+  .reg-div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    padding-bottom:30px ;
+  }
+.reg{
+   font-size: medium;
+    text-decoration: none;
+    color: #2a1928b5;
+    font-family: 'Merriweather';
+    font-weight: bold;
+    cursor: pointer;
+    border: none ;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 90px;
+    padding-right: 90px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, rgba(33, 176, 109, 0.699),
+    rgba(32, 149, 42, 0.719));
+}
+.reg:hover {
+  background-color: rgba(178, 176, 176, 0.324);
+  top: 10px; /* Move the hovered element down by 2 pixels */
+  box-shadow: none; /* Remove the box shadow effect */
 }
