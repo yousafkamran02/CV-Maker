@@ -1,6 +1,7 @@
 <div class="form-body">
-    <p>Login</p>
-    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" novalidate *ngIf="showLogin">
+      <p>Login</p>
       <div class="text">
         <input type="email" name="email" formControlName="email" placeholder="Email" />
         
@@ -9,12 +10,35 @@
         <input type="password" name="password" formControlName="password" placeholder="Password" />
       </div>
       <div class="button">
-        <input type="submit" />
+        <input type="submit" value="Login"/>
       </div>
       <div class="or-line">
         <span class="or-text">OR</span>
       </div>
-      <div class="reg-div"><a class="reg" href="#">Register</a></div>
+      <div class="reg-div"><a class="reg" (click)="toggleform()">Register</a></div>
+    </form>
+    <form  [formGroup]="RegForm" novalidate (ngSubmit)="onSubmitReg()" *ngIf="!showLogin">
+      <p>Register</p>
+      <div class="text">
+        <input type="text" placeholder="Full Name" name="reg_name" formControlName="reg_name" required/>
+        
+      </div>
+      <div class="text">
+        <input type="Email" placeholder="Email" name="reg_email" formControlName="reg_email" required/>
+      
+      </div>
+      <div class="text">
+        <input type="password" placeholder="Password" name="reg_password" formControlName="reg_password" required/>
+        
+      </div>
+      <div class="text">
+        <input type="password" placeholder="Confirm Password" name="reg_conpassword" formControlName="reg_conpassword" required/>
+      
+      </div>
+      <div class="button" id="space">
+        <input type="submit" value="Register" />
+      
+      </div>
     </form>
   </div>
   

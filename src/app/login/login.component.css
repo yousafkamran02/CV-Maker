@@ -9,8 +9,12 @@
 .text{
     padding: 15px;
 }
+#space{
+  padding-bottom: 20px;
+}
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
   height: 20px;
   width: 300px;
   border-radius: 10px;
@@ -104,4 +108,7 @@ p{
   background-color: rgba(178, 176, 176, 0.324);
   top: 10px; /* Move the hovered element down by 2 pixels */
   box-shadow: none; /* Remove the box shadow effect */
+}
+.invalid-field input {
+  border-color: red;
 }
