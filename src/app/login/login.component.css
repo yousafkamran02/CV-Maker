@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 .form-body{
-    /* background: linear-gradient(to right, rgba(250, 40, 173, 0.699),
-    rgba(149, 32, 102, 0.719)); Start with white and transition to purple */
-    background-color: #adabab68;
+     background: linear-gradient(to bottom, rgb(216, 2, 166),
+    rgb(60, 1, 70));
     border: 2px;
     border-radius: 10px;
 }
 .text{
-    padding: 15px;
+  padding: 15px;
+  padding-bottom: 5px;
+  padding-top: 10px;
 }
 #space{
   padding-bottom: 20px;
@@ -18,27 +19,39 @@ input[type="text"] {
   height: 20px;
   width: 300px;
   border-radius: 10px;
-  border: none; /* Remove the border */
   padding: 10px;
 }
-
+.invalid-field{
+  border-color: red;
+}
+.invalid-field-err{
+  color: red;
+  margin: 0;
+  padding: 0;
+  padding-left: 9px;
+  font-size: x-small;
+  font-weight: normal;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-family: 'Merriweather';
+}
 input[type="submit"]{
     height: 40px;
     width: 250px;
     cursor: pointer;
     border: none ;
     border-radius: 15px;
-    background: linear-gradient(to right, rgba(33, 176, 109, 0.699),
-    rgba(32, 149, 42, 0.719));
+    background-color: #6439e2b5;
     font-family: 'Merriweather';
     font-weight: bold;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
-    color: #2a1928b5;
+    color: white;
     font-size: medium;
 }
 
 input[type="submit"]:hover {
-    background-color: rgba(178, 176, 176, 0.324);
+    background-color: #6838f8d2;
     top: 10px; /* Move the hovered element down by 2 pixels */
     box-shadow: none; /* Remove the box shadow effect */
   }
@@ -51,7 +64,7 @@ input[type="submit"]:hover {
     font-family: 'Merriweather';
 }
 p{
-    color: #2a1928b5;
+    color: white;
     padding: 15px;
     font-size: 20px;
     display: flex;
@@ -90,7 +103,7 @@ p{
 .reg{
    font-size: medium;
     text-decoration: none;
-    color: #2a1928b5;
+    color: white;
     font-family: 'Merriweather';
     font-weight: bold;
     cursor: pointer;
@@ -101,14 +114,10 @@ p{
     padding-left: 90px;
     padding-right: 90px;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, rgba(33, 176, 109, 0.699),
-    rgba(32, 149, 42, 0.719));
+    background-color: #6439e2b5;
 }
 .reg:hover {
-  background-color: rgba(178, 176, 176, 0.324);
+  background-color: #6838f8d2;
   top: 10px; /* Move the hovered element down by 2 pixels */
   box-shadow: none; /* Remove the box shadow effect */
-}
-.invalid-field input {
-  border-color: red;
 }
