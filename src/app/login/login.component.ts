@@ -39,19 +39,5 @@ export class LoginComponent {
   {
     this.showLogin=!this.showLogin;
   }
-  onSubmitReg(){
-    this.reg_email=this.RegForm.get('reg_email')?.value;
-    this.reg_password=this.RegForm.get('reg_password')?.value;
-    this.reg_conpassword=this.RegForm.get('reg_conpassword')?.value;
-    this.reg_name=this.RegForm.get('reg_name')?.value;
-    
 
-    console.log(this.reg_email,this.reg_password,this.reg_name);
-  }
-  onSubmit() {
-    this.email=this.LoginForm.get('email')?.value;
-    this.password=this.LoginForm.get('password')?.value;
-    
-    console.log(this.email,this.password);
-  }
 }
