@@ -1,9 +1,20 @@
+
 .form-body {
   border: 2px solid black;
   padding: 20px;
   width: 400px;
-  margin-top: 30px;
+  height: 400px;
+  margin-top: 8%;
 }
+.template {
+  margin-top: 2%;
+  border: 1px solid #80808057;
+  padding: 3% 10px 3% 10px;
+}
+
+.fold {}
+
+.open {}
 
 p {
   font-family: 'Merriweather';
@@ -12,50 +23,62 @@ p {
   padding: 5px;
   margin: 0px;
   padding-left: 10px;
+  background: antiquewhite;
 }
 
-.pinfo {
+textarea {
+  height: 50px;
+  resize: none;
+}
+
+.input {
   width: -webkit-fill-available;
   padding: 10px;
   margin: 10px;
+  font-family: 'Merriweather';
 }
 
-.sum {
-  height: 50px;
-  resize: none;
-  font-family: 'Merriweather';
+input[type="checkbox"] {
+  margin-left: 5%;
 }
 
 label {
-
   font-family: 'Merriweather';
-  margin-left: 9px;
-}
-.end{
-  margin-left: 36%
+  margin-left: 2%;
 }
 
-.label{
-  font-size: small;
+.end {
+  margin-left: 40%
+}
+
+.label {
+  font-size: x-small;
   margin: 0;
 }
-input[type="checkbox"]{
-    
+
+.Year{
+  background-color: #acaaaa24;
   margin-left: 5%;
+  border: none;
+  height: 35px;
+  text-align: center;
 }
+
+.Month{
+  background-color: #acaaaa24;
+  border: none;
+  height: 35px;
+  text-align: center;
+}
+
 #endMonth {
   margin-left: 10%;
- 
 }
-#startMonth{
+
+#startMonth {
   margin-left: 2%;
 }
-#endYear{
-  margin-left: 2%;
-}
-#startYear{
-  margin-left:2%;
-}
+
 .button-next {
   position: relative;
   bottom: 0;
@@ -66,45 +89,41 @@ input[type="checkbox"]{
   padding-right: 10px;
   width: 35%;
 }
-
-.edu {
-  width: -webkit-fill-available;
-  padding: 10px;
-  margin: 10px;
-}
-
-input[type='date'] {
-  width: 100px;
-}
-
 .sle {
   width: -webkit-fill-available;
 }
-.datest{
-    height: 35px;
+.a {
+  margin-top: 5.5%;
+  margin-bottom: 7.5%;
+  margin-left: 2%;
+  font-weight: bold;
+  font-family: 'Merriweather';
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  text-align: left;
+  border: none;
+  background: antiquewhite;
 }
-.diva{
-    margin-top: 7.5%;
-    margin-bottom: 7.5%;
-    margin-left: 2%;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    background-color: rgb(185, 185, 185);
+
+.buttonst {
+  height: 30px;
+  padding: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 35%;
+  cursor: pointer;
+  background-color: #00679b5a;
+  border: none;
 }
-a{
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: 'Merriweather';
+
+.button {
+  display: flex;
+  justify-content: space-between;
 }
-.buttonst{
-    height: 30px;
-    padding: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 35%;
+
+.next {
+  position: relative;
+  bottom: 0;
+  left: 63%;
 }
-.button{
-    display: flex;
-    justify-content: space-between;
-}
+

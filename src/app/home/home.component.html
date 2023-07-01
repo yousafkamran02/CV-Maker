@@ -5,164 +5,271 @@
         <p>Personal Information</p>
       </div>
       <div>
-        <input class="pinfo" type="text" value="yousaf" readonly>
+        <input class="input" type="text" placeholder="Full Name" readonly>
       </div>
       <div>
-        <input class="pinfo" type="email" value="yousafkamran02@gmail.com" readonly>
+        <input class="input" type="email" placeholder="Email" readonly>
       </div>
       <div>
-        <input class="pinfo" type="number" value="03135279053" readonly>
+        <input class="input" type="number" placeholder="Telephone Number" readonly>
       </div>
       <div>
-        <input class="pinfo" type="text" value="address" readonly>
+        <input class="input" type="text" placeholder="Address" readonly>
       </div>
       <div>
-        <textarea class="pinfo sum" type="text" placeholder="Write your introduction in 50 words"></textarea>
+        <textarea class="input" type="text" placeholder="Write your introduction in 50 words"></textarea>
       </div>
       <div>
-        <button class="button-next" type="button" (click)="toggleregform()">Next</button>
+        <button class="buttonst next" type="button" (click)="toggleregform()">Next</button>
       </div>
     </div>
     <div *ngIf="showedu && !showexp">
       <div>
         <p>Education</p>
       </div>
-      <div>
-        <select name="degree" class="sle edu">
-          <option value="Select Degree" selected disabled>Select Degree</option>
-          <option value="Bachelor's degree (undergraduate)">Bachelor's degree (undergraduate)</option>
-          <option value="Master's degree (Graduate)">Master's degree (Graduate)</option>
-          <option value="Doctoral degree (Graduate)">Doctoral degree (Graduate)</option>
-        </select>
-      </div>
-      <div>
-        <input class="edu" type="text" placeholder="Name of Program">
-      </div>
-      <div>
-        <input class="edu" type="number" placeholder="cgpa">
-      </div>
-      <div>
-        <label for="startDate">Start:</label>
-        <label class="end" for="endDate">End:</label>
-        <input type="checkbox" id="disableEndDate" name="disableEndDate" (change)="togglendDate()">
-        <label class="label" for="disableEndDate">Currently Studying</label>
+      <div *ngFor="let enuform of eduforms; let i=index">
+        <div class="fold open template">
+          <div>
+            <select name="degree" class="sle input">
+              <option value="Select Degree" selected disabled>Select Degree</option>
+              <option value="Bachelor's degree (undergraduate)">Bachelor's degree (undergraduate)</option>
+              <option value="Master's degree (Graduate)">Master's degree (Graduate)</option>
+              <option value="Doctoral degree (Graduate)">Doctoral degree (Graduate)</option>
+            </select>
+          </div>
+          <div>
+            <input class="input" type="text" placeholder="Name of Program">
+          </div>
+          <div>
+            <input class="input" type="number" placeholder="CGPA">
+          </div>
+          <div>
+            <label for="startDate">Start:</label>
+            <label class="end" for="endDate">End:</label>
+            <input type="checkbox" id="disableEndDate" name="disableEndDate" (change)="togglendDate()">
+            <label class="label" for="disableEndDate">Currently Studying</label>
 
+          </div>
+          <div>
+            <select class="Month" id="startMonth" name="startMonth">
+              <option value="" selected disabled>Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select class="Year" id="startYear" name="startYear">
+              <option value="" selected disabled>Year</option>
+              <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              <!-- Add more options for other years -->
+            </select>
+            <select class="Month" id="endMonth" [disabled]="isEndDateDisabled" name="endMonth">
+              <option value="" selected disabled>Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select class="Year" id="endYear" [disabled]="isEndDateDisabled" name="endYear">
+              <option value="" selected disabled>Year</option>
+              <option *ngFor="let year of years" [value]="year">{{year}}</option>
+            </select>
+          </div>
+        </div>
+        <!-- <div>
+        <a href="javascript:void(0);" (click)="removeEducation()">Add another Education +</a>
+      </div> -->
       </div>
-
-
       <div>
-        <select class="datest" id="startMonth" name="startMonth">
-          <option value="" selected disabled>Month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-        <select class="datest" id="startYear" name="startYear">
-          <option value="" selected disabled>Year</option>
-          <option *ngFor="let year of years" [value]="year">{{year}}</option>
-          <!-- Add more options for other years -->
-        </select>
-        <select class="datest" id="endMonth" [disabled]="isEndDateDisabled" name="endMonth">
-          <option value="" selected disabled>Month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-        <select class="datest" id="endYear" [disabled]="isEndDateDisabled" name="endYear">
-          <option value="" selected disabled>Year</option>
-          <option *ngFor="let year of years" [value]="year">{{year}}</option>
-        </select>
+        <button type="button" class="a" (click)="addAnotherEducation()">Add another Education +</button>
       </div>
 
-      <div class="diva">
-        <a href="home/#">Add another Education +</a>
-      </div>
       <div class="button">
         <button type="button" class="buttonst" (click)="toggleregform()">Back</button>
         <button type="button" class="buttonst" (click)="toggleexpform()">Next</button>
       </div>
     </div>
-
-    <!--  <div *ngIf="showexp && !showtco">
+    <div *ngIf="showexp && !showtco">
       <div>
         <p>Experience</p>
       </div>
-      <div>
-        <input type="text" placeholder="Name of company">
-      </div>
-      <div>
-        <input type="text" placeholder="Write a short summary about your work in 250 words">
-      </div>
-      <div>
-        <label for="fromDate">From:</label>
-        <input type="date" id="fromDate" name="fromDate">
+      <div *ngFor="let expform of expforms; let i=index">
+        <div class="fold open template">
+          <div>
+            <input class="input" type="text" placeholder="Name of company">
+          </div>
+          <div>
+            <textarea class="input" placeholder="Write a short summary about your work in 250 words"></textarea>
+          </div>
+          <div>
+            <label for="startDate">Start:</label>
+            <label class="end" for="endDate">End:</label>
+            <input type="checkbox" id="disableEndDate" name="disableEndDate" (change)="togglendDate()">
+            <label class="label" for="disableEndDate">Currently Working</label>
 
-        <label for="toDate">To:</label>
-        <input type="date" id="toDate" name="toDate" [disabled]="disableToDate">
+          </div>
+          <div>
+            <select class="Month" id="startMonth" name="startMonth">
+              <option value="" selected disabled>Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select class="Year" id="startYear" name="startYear">
+              <option value="" selected disabled>Year</option>
+              <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              <!-- Add more options for other years -->
+            </select>
+            <select class="Month" id="endMonth" [disabled]="isEndDateDisabled" name="endMonth">
+              <option value="" selected disabled>Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select class="Year" id="endYear" [disabled]="isEndDateDisabled" name="endYear">
+              <option value="" selected disabled>Year</option>
+              <option *ngFor="let year of years" [value]="year">{{year}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="a" (click)="addAnotherExp()">Add another Experience +</button>
+      </div>
+      <div class="button">
+        <button class="buttonst" type="button" (click)="toggleexpform()">Back</button>
+        <button class="buttonst" type="button" (click)="toggletcoform()">Next</button>
+      </div>
+    </div>
 
-        <input type="checkbox" id="disableToDate" name="disableToDate" (change)="toggleToDate()">
-        <label for="disableToDate">Currently working</label>
-      </div>
-      <a href="home/#">If you have another Experience click here</a>
+    <div *ngIf="showtco && !showpro">
       <div>
-        <button type="button" (click)="toggleexpform()">Back</button>
-        <button type="button" (click)="toggletcoform()">Next</button>
-      </div>
-  </div>
+        <div>
+          <p>Technical Courses</p>
+        </div>
+        <div *ngFor="let tcform of tcforms; let i=index">
+          <div class="fold open template">
+            <div>
+              <input class="input" type="text" placeholder="Name of course">
+            </div>
+            <div>
+              <textarea class="input" placeholder="Write keypoints of the course"></textarea>
+            </div>
+            <div>
+              <label for="startDate">Start:</label>
+              <label class="end" for="endDate">End:</label>
+              <input type="checkbox" id="disableEndDate" name="disableEndDate" (change)="togglendDate()">
+              <label class="label" for="disableEndDate">Currently Studying</label>
 
-  <div *ngIf="showtco && !showpro">
-      <div>
-        <p>Technical Courses</p>
+            </div>
+            <div>
+              <select class="Month" id="startMonth" name="startMonth">
+                <option value="" selected disabled>Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+              <select class="Year" id="startYear" name="startYear">
+                <option value="" selected disabled>Year</option>
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                <!-- Add more options for other years -->
+              </select>
+              <select class="Month" id="endMonth" [disabled]="isEndDateDisabled" name="endMonth">
+                <option value="" selected disabled>Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+              <select class="Year" id="endYear" [disabled]="isEndDateDisabled" name="endYear">
+                <option value="" selected disabled>Year</option>
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="button" class="a" (click)="addAnothertc()">Add Another Course +</button>
+        </div>
+        <div class="button">
+          <button class="buttonst" type="button" (click)="toggletcoform()">Back</button>
+          <button class="buttonst" type="button" (click)="toggleproform()">Next</button>
+        </div>
       </div>
-      <div>
-        <input type="text" placeholder="Name of Course">
-      </div>
-      <div>
-        <label for="fromDate">From:</label>
-        <input type="date" id="fromDate" name="fromDate">
-        <label for="toDate">To:</label>
-        <input type="date" id="toDate" name="toDate">
-      </div>
-      <a href="home/#">If you have another Course click here</a>
-      <div>
-        <button type="button" (click)="toggletcoform()">Back</button>
-        <button type="button" (click)="toggleproform()">Next</button>
-      </div>
-  </div>
+    </div>
 
-  <div *ngIf="showpro">
+    <div *ngIf="showpro">
       <div>
         <p>Projects</p>
       </div>
-      <div>
-        <input type="text" placeholder="Name of project">
+      <div *ngFor="let pform of pforms;let i=index">
+        <div class="fold open template">
+          <div>
+            <input class="input" type="text" placeholder="Name of project">
+          </div>
+          <div>
+            <textarea class="input" placeholder="Write a short summary about your work in 50 words"></textarea>
+          </div>
+        </div>
       </div>
       <div>
-        <input type="text" placeholder="Write a short summary about your work in 50 words">
+        <button type="button" class="a" (click)="addAnotherp()">Add another Project +</button>
       </div>
-      <a href="home/#">If you have another Course click here</a>
-      <div>
-        <button type="button" (click)="toggleproform()">Back</button>
-       <input type="submit">
+      <div class="button">
+        <button class="buttonst" type="button" (click)="toggleproform()">Back</button>
+        <input  class="buttonst" type="submit">
       </div>
-      </div> -->
+    </div>
   </form>
 </div>

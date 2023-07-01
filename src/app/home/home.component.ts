@@ -12,13 +12,17 @@ export class HomeComponent {
   showtco = false;
   showpro = false;
   years: number[] = [];
-
+  eduforms:any[]=[1];
+  expforms:any[]=[1];
+  tcforms:any[]=[1];
+  pforms:any[]=[1];
   constructor() {
     // Populate the years array
     for (let year = 1999; year <= 2023; year++) {
       this.years.push(year);
     }
   }
+
   isEndDateDisabled=false;
   togglendDate(){
     this.isEndDateDisabled=!this.isEndDateDisabled;
@@ -42,5 +46,28 @@ export class HomeComponent {
   toggleproform() {
     this.showpro = !this.showpro;
   }
-  
+  addAnotherEducation(){
+    this.eduforms.push({});
+  }
+  addAnotherExp(){
+    this.expforms.push({});
+  }
+  addAnothertc(){
+    this.tcforms.push({});
+  }
+  addAnotherp(){
+    this.pforms.push({});
+  }
+  removetc(){
+    this.tcforms.pop();
+  }
+  removep(){
+    this.pforms.pop();
+  }
+  removeExp(){
+    this.expforms.pop();
+  }
+  removeEducation(){
+    this.eduforms.pop();
+  }
 }
