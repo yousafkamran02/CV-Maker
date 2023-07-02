@@ -1,59 +1,64 @@
 <div class="form-body">
-    
-    <form *ngIf="showLogin">
-      <p>Login</p>
-      <div class="text">
-        <input autocomplete="off"  [ngClass]="{'invalid-field': email.invalid&&email.touched}" type="email" name="email" 
-        placeholder="Email" ngModel email #email="ngModel" required/>
+
+  <form *ngIf="showLogin" [formGroup]="LoginForm" (ngSubmit)="loginCheck()">
+    <p>Login</p>
+    <div class="text">
+      <input autocomplete="off" 
+      type="email" name="email"
+        placeholder="Email" formControlName="email" required />
         <p class="invalid-field-err">
-          <span *ngIf="email.invalid&&email.touched">Please Enter a Valid Email</span>
+          <span>{{ emailValid() }}</span>
         </p>
-      </div>
-      <div class="text">
-        <input autocomplete="off"  [ngClass]="{'invalid-field': password.invalid&&password.touched}" type="password" name="password" placeholder="Password" ngModel #password="ngModel" required/>
-        <p class="invalid-field-err">
-          <span *ngIf="password.invalid&&password.touched">Please Enter a Valid Password</span>
-        </p>
-      </div>
-      <div class="button">
-        <input type="submit" value="Login" />
-      </div>
-      <div class="or-line">
-        <span class="or-text">OR</span>
-      </div>
-      <div class="reg-div"><a class="reg" (click)="toggleform()">Register</a></div>
-    </form>
-    <form *ngIf="!showLogin">
-      <p>Register</p>
-      <div class="text">
-        <input autocomplete="off"  type="text" placeholder="Full Name" name="reg_name" ngModel minlength="2" #name="ngModel" required/>
-        <p class="invalid-field-err">
-          <span *ngIf="name.invalid&&name.touched">Please Enter Your Name</span>
-        </p>
-      </div>
-      <div class="text">
-        <input autocomplete="off"  type="Email" placeholder="Email" name="reg_email" ngModel email #reg_email="ngModel" required/>
-        <p class="invalid-field-err">
-          <span *ngIf="reg_email.invalid&&reg_email.touched">Please Enter a Valid Email</span>
-        </p>
-      </div>
-      <div class="text">
-        <input autocomplete="off"  type="password" placeholder="Password" name="reg_password"  ngModel password #reg_password="ngModel" required/>
-        <p class="invalid-field-err">
-          <span *ngIf="reg_password.invalid&&reg_password.touched">Please Enter a Valid Password</span>
-        </p>
-      </div>
-      <div class="text">
-        <input autocomplete="off"  type="password" placeholder="Confirm Password" name="reg_conpassword" 
-        ngModel #reg_conpassword="ngModel" required/>
-        <p class="invalid-field-err">
-          <span *ngIf="reg_conpassword.value!==reg_password.value&&reg_conpassword.touched">Password donot match</span>
-        </p>
-      </div>
-      <div class="button" id="space">
-        <input type="submit" value="Register" />
-      
-      </div>
-    </form>
+    </div>
+    <div class="text">
+      <input autocomplete="off" type="password"
+        name="password" placeholder="Password" formControlName="password" required />
+      <p class="invalid-field-err">
+        <span>{{ passwordValid() }}</span>
+      </p>
+    </div>
+    <div class="button">
+      <input type="submit" value="Login" (click)="LoginForm.controls['email'].markAsTouched();LoginForm.controls['password'].markAsTouched();" [disabled]="(emailValid()&&passwordValid())"/>
+    </div>
+  </form>
+  <div class="or-line">
+    <span class="or-text">OR</span>
   </div>
-  
+  <div class="reg-div"><a class="reg" (click)="toggleform()">Register</a></div>
+
+  <form *ngIf="!showLogin">
+    <p>Register</p>
+    <div class="text">
+      <input autocomplete="off" type="text" placeholder="Full Name" name="reg_name" ngModel minlength="2"
+        #name="ngModel" required />
+      <p class="invalid-field-err">
+        <span *ngIf="name.invalid&&name.touched">Please Enter Your Name</span>
+      </p>
+    </div>
+    <div class="text">
+      <input autocomplete="off" type="Email" placeholder="Email" name="reg_email" ngModel email #reg_email="ngModel"
+        required />
+      <p class="invalid-field-err">
+        <span *ngIf="reg_email.invalid&&reg_email.touched">Please Enter a Valid Email</span>
+      </p>
+    </div>
+    <div class="text">
+      <input autocomplete="off" type="password" placeholder="Password" name="reg_password" ngModel password
+        #reg_password="ngModel" required />
+      <p class="invalid-field-err">
+        <span *ngIf="reg_password.invalid&&reg_password.touched">Please Enter a Valid Password</span>
+      </p>
+    </div>
+    <div class="text">
+      <input autocomplete="off" type="password" placeholder="Confirm Password" name="reg_conpassword" ngModel
+        #reg_conpassword="ngModel" required />
+      <p class="invalid-field-err">
+        <span *ngIf="reg_conpassword.value!==reg_password.value&&reg_conpassword.touched">Password donot match</span>
+      </p>
+    </div>
+    <div class="button" id="space">
+      <input type="submit" value="Register" />
+
+    </div>
+  </form>
+</div>

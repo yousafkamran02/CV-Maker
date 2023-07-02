@@ -1,0 +1,47 @@
+.cv-body {
+    height: 465px;
+    width: 700px;
+}
+
+.cv-header {
+    background-color: #303846
+}
+
+.name {
+    font-size: x-large;
+    color: white;
+
+}
+
+.email {
+    color: #bac1d1;
+    margin: 0;
+}
+
+.header-p {
+    padding: 10px 3px 0px 12px;
+    font-family: 'Merriweather';
+    font-weight: bolder
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 3%;
+}
+
+.mail {
+    background-image: url('..\..\assets\img\email.png');
+}
+
+.phone {
+    background-image: url('..\..\assets\img\phone.png');
+}
+
+.icon {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 20px 15px 14px;
+    margin-right: 5px;
+    margin-left: 12px;
+}

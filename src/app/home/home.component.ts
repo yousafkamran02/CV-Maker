@@ -70,4 +70,4 @@ export class HomeComponent {
   removeEducation(){
     this.eduforms.pop();
   }
-}
+ }

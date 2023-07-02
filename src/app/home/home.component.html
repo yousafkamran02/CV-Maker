@@ -5,19 +5,16 @@
         <p>Personal Information</p>
       </div>
       <div>
-        <input class="input" type="text" placeholder="Full Name" readonly>
+        <input class="input" type="text" placeholder="Full Name" value="" readonly>
       </div>
       <div>
-        <input class="input" type="email" placeholder="Email" readonly>
+        <input class="input" type="email" placeholder="Email" value="" readonly>
       </div>
       <div>
-        <input class="input" type="number" placeholder="Telephone Number" readonly>
+        <input class="input" type="number" name="telephone" placeholder="Telephone Number" ngModel #telephone telephone="ngModel" required>
       </div>
       <div>
-        <input class="input" type="text" placeholder="Address" readonly>
-      </div>
-      <div>
-        <textarea class="input" type="text" placeholder="Write your introduction in 50 words"></textarea>
+        <textarea class="input" type="text" name="introduction" placeholder="Write your introduction in 50 words" ngModel #introduction introduction="ngModel" required></textarea>
       </div>
       <div>
         <button class="buttonst next" type="button" (click)="toggleregform()">Next</button>
@@ -27,7 +24,7 @@
       <div>
         <p>Education</p>
       </div>
-      <div *ngFor="let enuform of eduforms; let i=index">
+      <div *ngFor="let eduform of eduforms; let i=index">
         <div class="fold open template">
           <div>
             <select name="degree" class="sle input">

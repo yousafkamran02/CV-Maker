@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { CVComponent } from './cv/cv.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
+    CVComponent,
 
   ],
   imports: [

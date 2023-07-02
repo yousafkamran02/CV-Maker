@@ -1,20 +1,32 @@
-
 .form-body {
   border: 2px solid black;
   padding: 20px;
   width: 400px;
   height: 400px;
   margin-top: 8%;
+  position: relative; /* Add this line */
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-body::after { /* Add this block */
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid black;
+  pointer-events: none;
+}
+
 .template {
   margin-top: 2%;
   border: 1px solid #80808057;
   padding: 3% 10px 3% 10px;
 }
-
-.fold {}
-
-.open {}
 
 p {
   font-family: 'Merriweather';
@@ -35,6 +47,9 @@ textarea {
   width: -webkit-fill-available;
   padding: 10px;
   margin: 10px;
+  border-radius: 6px;
+  border-style: hidden;
+  background-color: rgba(255, 216, 164, 0.253);
   font-family: 'Merriweather';
 }
 
@@ -57,7 +72,7 @@ label {
 }
 
 .Year{
-  background-color: #acaaaa24;
+  background-color: rgba(255, 216, 164, 0.253);
   margin-left: 5%;
   border: none;
   height: 35px;
@@ -65,7 +80,7 @@ label {
 }
 
 .Month{
-  background-color: #acaaaa24;
+  background-color: rgba(255, 216, 164, 0.253);
   border: none;
   height: 35px;
   text-align: center;
@@ -78,21 +93,11 @@ label {
 #startMonth {
   margin-left: 2%;
 }
-
-.button-next {
-  position: relative;
-  bottom: 0;
-  left: 63%;
-  height: 30px;
-  padding: 7px;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 35%;
-}
 .sle {
   width: -webkit-fill-available;
 }
 .a {
+  cursor: progress;
   margin-top: 5.5%;
   margin-bottom: 7.5%;
   margin-left: 2%;
@@ -112,7 +117,7 @@ label {
   padding-right: 10px;
   width: 35%;
   cursor: pointer;
-  background-color: #00679b5a;
+  background-color: #ffe29c;
   border: none;
 }
 
@@ -125,5 +130,6 @@ label {
   position: relative;
   bottom: 0;
   left: 63%;
+  margin-top: 5%;
 }
 
