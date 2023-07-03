@@ -3,62 +3,66 @@
   <form *ngIf="showLogin" [formGroup]="LoginForm" (ngSubmit)="loginCheck()">
     <p>Login</p>
     <div class="text">
-      <input autocomplete="off" 
-      type="email" name="email"
-        placeholder="Email" formControlName="email" required />
-        <p class="invalid-field-err">
-          <span>{{ emailValid() }}</span>
-        </p>
+      <input autocomplete="off" type="email" name="email" placeholder="Email" formControlName="email" required />
+      <p class="invalid-field-err">
+        <span>{{ emailValid() }}</span>
+      </p>
     </div>
     <div class="text">
-      <input autocomplete="off" type="password"
-        name="password" placeholder="Password" formControlName="password" required />
+      <input autocomplete="off" type="password" name="password" placeholder="Password" formControlName="password"
+        required />
       <p class="invalid-field-err">
         <span>{{ passwordValid() }}</span>
       </p>
     </div>
     <div class="button">
-      <input type="submit" value="Login" (click)="LoginForm.controls['email'].markAsTouched();LoginForm.controls['password'].markAsTouched();" [disabled]="(emailValid()&&passwordValid())"/>
+      <input type="submit" value="Login"
+        (click)="LoginForm.controls['email'].markAsTouched();LoginForm.controls['password'].markAsTouched();"
+        [disabled]="(emailValid()&&passwordValid())" />
     </div>
-  </form>
-  <div class="or-line">
-    <span class="or-text">OR</span>
-  </div>
-  <div class="reg-div"><a class="reg" (click)="toggleform()">Register</a></div>
 
-  <form *ngIf="!showLogin">
-    <p>Register</p>
-    <div class="text">
-      <input autocomplete="off" type="text" placeholder="Full Name" name="reg_name" ngModel minlength="2"
-        #name="ngModel" required />
-      <p class="invalid-field-err">
-        <span *ngIf="name.invalid&&name.touched">Please Enter Your Name</span>
-      </p>
+    <div class="or-line">
+      <span class="or-text">OR</span>
     </div>
+    <div class="reg-div"><a class="reg" (click)="toggleform()">Register</a></div>
+  </form>
+  <form [formGroup]="RegForm" *ngIf="!showLogin" (ngSubmit)="register()">
+    <div class="container">
+      <span class="back" (click)="toggleform()"></span>
+      <p>Register</p>
+    </div>
+    
     <div class="text">
-      <input autocomplete="off" type="Email" placeholder="Email" name="reg_email" ngModel email #reg_email="ngModel"
+      <input autocomplete="off" type="text" placeholder="Full Name" name="reg_name" formControlName="reg_name"
         required />
       <p class="invalid-field-err">
-        <span *ngIf="reg_email.invalid&&reg_email.touched">Please Enter a Valid Email</span>
+        <span>{{ isNameValid() }}</span>
       </p>
     </div>
     <div class="text">
-      <input autocomplete="off" type="password" placeholder="Password" name="reg_password" ngModel password
-        #reg_password="ngModel" required />
+      <input autocomplete="off" type="Email" placeholder="Email" name="reg_email" formControlName="reg_email"
+        required />
       <p class="invalid-field-err">
-        <span *ngIf="reg_password.invalid&&reg_password.touched">Please Enter a Valid Password</span>
+        <span>{{ isRegemailValid() }}</span>
       </p>
     </div>
     <div class="text">
-      <input autocomplete="off" type="password" placeholder="Confirm Password" name="reg_conpassword" ngModel
-        #reg_conpassword="ngModel" required />
+      <input autocomplete="off" type="password" placeholder="Password" name="reg_password"
+        formControlName="reg_password" />
       <p class="invalid-field-err">
-        <span *ngIf="reg_conpassword.value!==reg_password.value&&reg_conpassword.touched">Password donot match</span>
+        <span>{{ isRegpasswordValid() }}</span>
+      </p>
+    </div>
+    <div class="text">
+      <input autocomplete="off" type="password" placeholder="Confirm Password" name="reg_conpassword"
+        formControlName="reg_conpassword" required />
+      <p class="invalid-field-err">
+        <span>{{ isMatch() }}</span>
       </p>
     </div>
     <div class="button" id="space">
-      <input type="submit" value="Register" />
-
+      <input type="submit" value="Register" (click)="RegForm.controls['reg_email'].markAsTouched();RegForm.controls['reg_password'].markAsTouched();RegForm.controls['reg_name'].markAsTouched();"
+      [disabled]="(isRegemailValid()&&isRegpasswordValid()&&!isMatch())"/>
     </div>
   </form>
 </div>

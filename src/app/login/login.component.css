@@ -20,12 +20,17 @@ input[type="text"] {
   border-radius: 10px;
   padding: 10px;
 }
-.invalid-field{
-  border-color: red;
-}
+/* .back{
+  background-image: url('..\..\assets\img\back.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px 21px 7px 13px;
+  margin-left: 10px;
+  
+} */
 .invalid-field-err{
   color: red;
-  margin: 0;
+  margin-top: 1%;
   padding: 0;
   padding-left: 9px;
   font-size: x-small;
@@ -62,7 +67,7 @@ input[type="submit"]:hover {
     align-items: center;
     font-family: 'Merriweather';
 }
-p{
+/* p{
   color: rgb(146, 146, 146);
     padding: 15px;
     font-size: 20px;
@@ -72,7 +77,7 @@ p{
     font-family: 'Merriweather';
     font-weight: bold;
     margin: 0;
-}
+} */
 .or-line {
     position: relative;
     display: flex;
@@ -119,4 +124,30 @@ p{
   background-color: #c42457b5;
   top: 10px; /* Move the hovered element down by 2 pixels */
   box-shadow: none; /* Remove the box shadow effect */
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.back {
+  background-image: url('..\..\assets\img\back.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 31px 24px 8px 13px;
+  margin-left: 10px;
+  margin-right: 22%;
+  cursor: pointer;
+}
+
+p {
+  color: rgb(146, 146, 146);
+  padding: 15px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Merriweather';
+  font-weight: bold;
+  margin: 0;
 }
