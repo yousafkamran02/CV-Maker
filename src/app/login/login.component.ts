@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../share/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent {
   reg_conpassword: string;
   reg_name: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public userService:UserService) {
+   
     this.email = 'admin@admin.com';
     this.password = '1234';
     this.reg_email = '';
@@ -36,6 +38,13 @@ export class LoginComponent {
     })
   }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.userService.getUser().subscribe(data=>{
+      this.userService.listUsers=data;
+    });
+  }
   showLogin = true;
 
   toggleform() {
@@ -62,20 +71,45 @@ export class LoginComponent {
     return '';
   }
 
+  // loginCheck() {
+  //   const email = this.LoginForm.get('email')?.value;
+  //   const password = this.LoginForm.get('password')?.value;
+  //   console.log(this.userService.listUsers);
+  //   const user=this.userService.listUsers.find(
+      
+  //     (u)=>u.Email==email&&u.Password==password
+  //   );
+    
+  //   console.log(user);
+  //   if (!user) {
+  //     this.LoginForm.controls['email'].setErrors({ 'incorrect': true });
+  //     this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
+  //   } else if (password !== user.Password) {
+  //     this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
+  //   } else {
+  //     // Route to the home page
+  //     this.router.navigate(['/home']);
+  //   }
+  // }
   loginCheck() {
     const email = this.LoginForm.get('email')?.value;
     const password = this.LoginForm.get('password')?.value;
-
-    if (email !== this.email && password !== this.password) {
+    console.log(this.userService.listUsers); // Print the user list to check if it is populated correctly
+  
+    const user = this.userService.listUsers.find((u) => u.Email == email && u.Password == password);
+    console.log(user); // Print the user object to check if it is populated correctly
+  
+    if (!user) {
       this.LoginForm.controls['email'].setErrors({ 'incorrect': true });
       this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
-    } else if (password !== this.password) {
+    } else if (password !== user.Password) {
       this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
     } else {
       // Route to the home page
       this.router.navigate(['/home']);
     }
   }
+  
   isNameValid() {
 
     const reg_name = this.RegForm.get('reg_name');
