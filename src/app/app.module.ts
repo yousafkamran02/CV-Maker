@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CVComponent } from './cv/cv.component';
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CVComponent } from './cv/cv.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
