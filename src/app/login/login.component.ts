@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../share/user.service';
+import { User } from '../share/user.model';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +12,8 @@ import { UserService } from '../share/user.service';
 export class LoginComponent {
   LoginForm: FormGroup;
   RegForm: FormGroup;
-  email: string;
-  password: string;
-  reg_email: string;
-  reg_password: string;
-  reg_conpassword: string;
-  reg_name: string;
 
   constructor(private router: Router, public userService:UserService) {
-
-    this.reg_email = '';
-    this.reg_password = '';
-    this.reg_conpassword = '';
-    this.reg_name = '';
     this.LoginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
@@ -37,14 +27,12 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.userService.getUser().subscribe(data=>{
       this.userService.listUsers=data;
     });
   }
+  
   showLogin = true;
-
   toggleform() {
     this.showLogin = !this.showLogin;
   }
@@ -68,23 +56,26 @@ export class LoginComponent {
     }
     return '';
   }
+  loggedInUser: User | undefined;
 
   loginCheck() {
     const email = this.LoginForm.get('email')?.value;
     const password = this.LoginForm.get('password')?.value;
     const user=this.userService.listUsers.find(
-      (u)=>u.Email==email&&u.Password==password
+      (u)=>u.email==email&&u.password==password
     );
     if (!user) {
       this.LoginForm.controls['email'].setErrors({ 'incorrect': true });
       this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
-    } else if (password !== user.Password) {
+    } else if (password !== user.password) {
       this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
     } else {
-      // Route to the home page
+      this.loggedInUser = user;
       this.router.navigate(['/home']);
     }
   }
+  
+  
   isNameValid() {
 
     const reg_name = this.RegForm.get('reg_name');
@@ -96,6 +87,7 @@ export class LoginComponent {
     return '';
 
   }
+
   isRegemailValid() {
     const reg_email = this.RegForm.get('reg_email');
     if (reg_email?.touched && reg_email?.invalid) {
@@ -105,6 +97,7 @@ export class LoginComponent {
     }
     return '';
   }
+
 isRegpasswordValid() {
   const reg_password = this.RegForm.get('reg_password');
     if (reg_password?.touched && reg_password.invalid) {
@@ -114,6 +107,7 @@ isRegpasswordValid() {
     }
     return '';
   }
+
 isMatch() {
   const reg_conpassword = this.RegForm.get('reg_conpassword');
   const reg_password = this.RegForm.get('reg_password');
@@ -124,28 +118,52 @@ isMatch() {
     }
     return '';
   }
+
   register() {
+    const reg_email = this.RegForm.controls['reg_email'];
+    const user = this.userService.listUsers.find(
+      (u) => u.email === reg_email.value
+    );
     if (this.RegForm.invalid) {
       // Mark all fields as touched to display validation errors
       this.RegForm.markAllAsTouched();
       return;
-    }
-  
-    if (this.isMatch()) {
+    } else if (user) {
+      this.RegForm.controls['reg_email'].setErrors({ 'incorrect': true });
+      return;
+    } else if (this.isMatch()) {
       this.RegForm.controls['reg_conpassword'].setErrors({ 'incorrect': true });
       return;
+    } else {
+      // Extract form values
+      const email = this.RegForm.get('reg_email')?.value;
+      const password = this.RegForm.get('reg_password')?.value;
+      const name = this.RegForm.get('reg_name')?.value;
+      console.log(`Email: ${email}; Password: ${password}; Name: ${name}`);
+      const user: User = {
+        email: email,
+        password: password,
+        name: name,
+      };
+      this.userService.saveData(user)
+  .subscribe(
+    response => {
+      // Handle successful response
+      console.log('Data saved successfully:', response);
+      // Reset the form or perform any other actions
+    },
+    error => {
+      // Handle error response
+      console.error('Error saving data:', error);
+      // Display an error message to the user or perform any other error handling
     }
-  
-    // Extract form values
-    const email = this.RegForm.get('reg_email')?.value;
-    const password = this.RegForm.get('reg_password')?.value;
-    const name = this.RegForm.get('reg_name')?.value;
-    console.log(`Email: ${email}; Password: ${password}; Name: ${name}`);
-
+  );
+      this.toggleform();
+    }
     // Perform registration logic or any other actions
   
     // Route to the home page or toggle the form if needed
-    this.toggleform();
   }
+  
   
 }

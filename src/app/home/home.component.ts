@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from '../share/user.model';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  loggedInUser: User | undefined;
   disableToDate = false;
   showedu = false;
   showexp = false;
@@ -22,6 +24,7 @@ export class HomeComponent {
       this.years.push(year);
     }
   }
+  
 
   isEndDateDisabled=false;
   togglendDate(){

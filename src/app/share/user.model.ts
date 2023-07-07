@@ -1,11 +1,10 @@
 export class User {
-    Id:number
-    Email:string 
-    Name:string 
-    Password:string 
+    email:string 
+    name:string 
+    password:string 
+    
 }
 export class CV_Info{
-    Id: number;
     UserId: number;
     TelephoneNumber: string;
     Introduction: string;

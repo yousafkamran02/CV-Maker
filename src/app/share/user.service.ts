@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CV_Info, User } from './user.model';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,16 @@ export class UserService {
     UserData:User= new User();
 
 
-    saveData(){
-      return this.myhttp.post(this.userUrl,this.UserData); //insert data
+    saveData(user: User) {
+      return this.myhttp.post(this.userUrl, user)
+        .pipe(
+          catchError(error => {
+            console.error('Error saving data:', error);
+            throw error;
+          })
+        );
     }
+    
     // updateData(){
     //   return this.myhttp.put(`${this.userUrl}/${this.UserData.Id}`,this.UserData); //Update data
     // }
