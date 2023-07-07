@@ -19,9 +19,7 @@ export class LoginComponent {
   reg_name: string;
 
   constructor(private router: Router, public userService:UserService) {
-   
-    this.email = 'admin@admin.com';
-    this.password = '1234';
+
     this.reg_email = '';
     this.reg_password = '';
     this.reg_conpassword = '';
@@ -71,34 +69,12 @@ export class LoginComponent {
     return '';
   }
 
-  // loginCheck() {
-  //   const email = this.LoginForm.get('email')?.value;
-  //   const password = this.LoginForm.get('password')?.value;
-  //   console.log(this.userService.listUsers);
-  //   const user=this.userService.listUsers.find(
-      
-  //     (u)=>u.Email==email&&u.Password==password
-  //   );
-    
-  //   console.log(user);
-  //   if (!user) {
-  //     this.LoginForm.controls['email'].setErrors({ 'incorrect': true });
-  //     this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
-  //   } else if (password !== user.Password) {
-  //     this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
-  //   } else {
-  //     // Route to the home page
-  //     this.router.navigate(['/home']);
-  //   }
-  // }
   loginCheck() {
     const email = this.LoginForm.get('email')?.value;
     const password = this.LoginForm.get('password')?.value;
-    console.log(this.userService.listUsers); // Print the user list to check if it is populated correctly
-  
-    const user = this.userService.listUsers.find((u) => u.Email == email && u.Password == password);
-    console.log(user); // Print the user object to check if it is populated correctly
-  
+    const user=this.userService.listUsers.find(
+      (u)=>u.Email==email&&u.Password==password
+    );
     if (!user) {
       this.LoginForm.controls['email'].setErrors({ 'incorrect': true });
       this.LoginForm.controls['password'].setErrors({ 'incorrect': true });
@@ -109,7 +85,6 @@ export class LoginComponent {
       this.router.navigate(['/home']);
     }
   }
-  
   isNameValid() {
 
     const reg_name = this.RegForm.get('reg_name');

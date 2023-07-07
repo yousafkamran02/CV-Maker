@@ -11,7 +11,7 @@ export class UserService {
   constructor(private myhttp:HttpClient) {}
   
     userUrl:string='https://localhost:7088/api/users';
-    infoUrl:string='http://localhost:7088/api/CVInfoes';
+    infoUrl:string='https://localhost:7088/api/CVInfoes';
     listUsers:User[]=[];
     listinfo:CV_Info[]=[];
 
